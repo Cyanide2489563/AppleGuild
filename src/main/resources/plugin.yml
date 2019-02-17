@@ -1,6 +1,6 @@
 name: main
 version: @version@
-main: ayrou.appleguild.main
+main: main
 api-version: 1.13
 prefix: main
 load: STARTUP
