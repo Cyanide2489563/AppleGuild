@@ -1,8 +1,8 @@
-name: main
-version: @version@
-main: main
+name: Main
+version: 0.0.1
+main: Main
 api-version: 1.13
-prefix: main
+prefix: Main
 load: STARTUP
 authors: [Apple14789]
 description: 公會插件
