@@ -11,11 +11,13 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+        checkPlugin();
+        info(message.Plugin_Initialize);
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        info(message.Plugin_Close);
     }
 
     public static void info(String string) {
@@ -28,5 +30,24 @@ public final class Main extends JavaPlugin {
 
     public static Message getMessage() {
         return message;
+    }
+
+    private void checkPlugin() {
+        int a = 0;
+        if (!Bukkit.getPluginManager().isPluginEnabled("Vault")) {
+            info("缺少Vault");
+            a++;
+        }
+        if (!Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
+            info("缺少worldguard");
+            a++;
+        }
+        if (!Bukkit.getPluginManager().isPluginEnabled("WorldEdit")) {
+            info("缺少worldedit");
+            a++;
+        }
+        if (a > 0) {
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
     }
 }

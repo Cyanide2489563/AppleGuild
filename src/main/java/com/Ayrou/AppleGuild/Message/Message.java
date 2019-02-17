@@ -6,36 +6,37 @@ import com.Ayrou.AppleGuild.Main;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class Message {
-    private String Plugin_Close;
-    private String Sql_Initialize;
-    private String Sql_Connection;
-    private String Sql_Disconnect;
-    private String Affirmative;
-    private String Negative;
-    private String Guild_Create_Fail_Name_Empty;
-    private String Guild_Create_Fail_Name_Format_Error;
-    private String Guild_Create_Fail_Blance_Shortage;
-    private String Guild_Create_Fail_Systeam_Error;
-    private String Guild_Create_Success;
-    private String Guild_Create_Fail_joined;
-    private String Guild_Invite_Player;
-    private String Guild_Invite_Fail_No_Guild;
-    private String Guild_Invite_Fail_Name_Empty;
-    private String Guild_Invite_Fail_Player_Offline;
-    private String Guild_Invite_Fail_Player_Stupid;
-    private String Guild_Invite_Fail_Player_joined;
-    private String Guild_Invite_Fail_Player_Already;
-    private String Guild_Invite_Fail_Player_Negative;
-    private String Guild_Invite_Fail_Guild_Full;
-    private String Guild_Invite_Player_Affirmative;
-    private String Guild_Join_Accept;
-    private String Guild_Join_Fail_Cancel;
-    private String Guild_Join_Fail_Accept;
-    private String Guild_Join_Fail_Empty;
-    private String Guild_Join_Fail_TimeOut;
-    private String Guild_Leave_Success;
-    private String Guild_Leave_Message;
-    private String Guild_Leave_Fail_No_Guild;
+    public String Plugin_Initialize;
+    public String Plugin_Close;
+    public String Sql_Initialize;
+    public String Sql_Connection;
+    public String Sql_Disconnect;
+    public String Affirmative;
+    public String Negative;
+    public String Guild_Create_Fail_Name_Empty;
+    public String Guild_Create_Fail_Name_Format_Error;
+    public String Guild_Create_Fail_Blance_Shortage;
+    public String Guild_Create_Fail_Systeam_Error;
+    public String Guild_Create_Success;
+    public String Guild_Create_Fail_joined;
+    public String Guild_Invite_Player;
+    public String Guild_Invite_Fail_No_Guild;
+    public String Guild_Invite_Fail_Name_Empty;
+    public String Guild_Invite_Fail_Player_Offline;
+    public String Guild_Invite_Fail_Player_Stupid;
+    public String Guild_Invite_Fail_Player_joined;
+    public String Guild_Invite_Fail_Player_Already;
+    public String Guild_Invite_Fail_Player_Negative;
+    public String Guild_Invite_Fail_Guild_Full;
+    public String Guild_Invite_Player_Affirmative;
+    public String Guild_Join_Accept;
+    public String Guild_Join_Fail_Cancel;
+    public String Guild_Join_Fail_Accept;
+    public String Guild_Join_Fail_Empty;
+    public String Guild_Join_Fail_TimeOut;
+    public String Guild_Leave_Success;
+    public String Guild_Leave_Message;
+    public String Guild_Leave_Fail_No_Guild;
 
 
     public Message() {
@@ -47,7 +48,7 @@ public class Message {
         File file = new File(plugin.getDataFolder(),"Language/language.yml");
         YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
         //插件初始化階段
-        String plugin_Initialize = config.getString("Plugin_Initialize");
+        Plugin_Initialize = config.getString("Plugin_Initialize");
         Plugin_Close = config.getString("Plugin_Close");
         Sql_Initialize = config.getString("Sql_Initialize");
         Sql_Connection = config.getString("Sql_Connection");

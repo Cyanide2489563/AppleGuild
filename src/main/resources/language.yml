@@ -1,0 +1,54 @@
+#公會插件
+Plugin_Initialize: "公會插件已初始化"
+Plugin_Close: "公會插件已關閉"
+Sql_Initialize: "公會插件資料庫已初始化"
+Sql_Connection: "公會插件已連線至資料庫"
+Sql_Disconnect: "公會插件已從資料庫斷開連線"
+#通用
+Affirmative: "確定"
+Negative: "取消"
+Accept: "接受"
+Cancel: "拒絕"
+#公會建立
+Guild_Create_Fail_Name_Empty: "請輸入公會名稱"
+Guild_Create_Fail_Name_Equally: "已有同樣的公會名稱"
+Guild_Create_Fail_Name_Format_Error: "公會名稱需符合中英文數字且長度大於1小於10"
+Guild_Create_Fail_Blance_Shortage: "建立公會需起始資金%Price%"
+Guild_Create_Fail_joined: "您無法建立公會，您已加入公會"
+Guild_Create_Fail_Systeam_Error: "系統發生錯誤"
+Guild_Create_Success: "%GuildName%公會建立成功"
+#公會邀請
+Guild_Invite_Player: "已邀請%PlayerName%加入公會"
+Guild_Invite_Fail_No_Guild: "你沒有公會"
+Guild_Invite_Fail_Name_Empty: "請輸入玩家名稱"
+Guild_Invite_Fail_Player_Offline: "玩家%PlayerName%已下線"
+Guild_Invite_Fail_Player_Stupid: "您不能對自己送出邀請"
+Guild_Invite_Fail_Player_joined: "玩家%PlayerName%已是公會成員"
+Guild_Invite_Fail_Player_Already: "玩家%PlayerName%已經有公會"
+Guild_Invite_Fail_Player_Negative: "玩家%PlayerName%已拒絕邀請"
+Guild_Invite_Fail_Guild_Full: "公會已滿"
+Guild_Invite_Player_Affirmative: "玩家%PlayerName%已接受邀請"
+#公會加入
+Guild_Join_Accept: "已成功加入%GuildName%公會"
+Guild_Join_Fail_Cancel: "已拒絕加入%GuildName%公會"
+Guild_Join_Fail_Empty: "無效的公會邀請"
+Guild_Join_Fail_TimeOut: "您的邀請已過期"
+Guild_Join_Fail_Accept: "已有公會"
+#公會離開
+Guild_Leave_Success: "已離開公會%GuildName%"
+Guild_Leave_Message: "玩家%PlayName%已離開公會"
+Guild_Leave_Fail_No_Guild: "你沒有公會"
+#公會管理
+
+#公會外交
+Guild_diplomacy_Fail_Name_Empty: "請輸入該公會名稱"
+Guild_diplomacy_Fail_Stupid: "您不能對自己公會更改外交狀態"
+Guild_diplomacy_Fail_Equally: "已與該公會為%Diplomacy%狀態"
+Guild_diplomacy_Fail_Negative: "%GuildName%公會已拒絕您的外交變更"
+Guild_diplomacy_Affirmative: "%GuildName%公會已接受您的外交變更"
+Guild_diplomacy_Accept: "已接受%GuildName%公會的外交狀態"
+Guild_diplomacy_Cancel: "已拒絕%GuildName%公會的外交狀態"
+Guild_diplomacy_Message: "%GuildName%公會想更改對您公會的外交狀態為%Diplomacy%"
+
+#公會會館
+#公會登入獎勵
