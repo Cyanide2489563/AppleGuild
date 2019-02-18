@@ -1,5 +1,6 @@
 package com.Ayrou.AppleGuild;
 
+import com.Ayrou.AppleGuild.Guild.GuildManager;
 import com.Ayrou.AppleGuild.Message.Message;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -8,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
     private static Main plugin;
+    private static GuildManager guildManager;
     private static Message message = null;
     private static Economy economy = null;
 
@@ -17,6 +19,8 @@ public final class Main extends JavaPlugin {
         checkPlugin();
         info(message.Plugin_Initialize);
         if(!setupEconomy()) info("經濟插件未正確啟用");
+        guildManager = new GuildManager();
+
     }
 
     @Override
