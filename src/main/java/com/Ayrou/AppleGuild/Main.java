@@ -1,5 +1,7 @@
 package com.Ayrou.AppleGuild;
 
+import com.Ayrou.AppleGuild.Commands.CommandManager;
+import com.Ayrou.AppleGuild.Commands.CommandTabManager;
 import com.Ayrou.AppleGuild.Guild.GuildManager;
 import com.Ayrou.AppleGuild.Message.Message;
 import net.milkbowl.vault.economy.Economy;
@@ -20,7 +22,8 @@ public final class Main extends JavaPlugin {
         info(message.Plugin_Initialize);
         if(!setupEconomy()) info("經濟插件未正確啟用");
         guildManager = new GuildManager();
-
+        getCommand("Guild").setExecutor(new CommandManager());
+        getCommand("Guild").setTabCompleter(new CommandTabManager());
     }
 
     @Override
@@ -38,6 +41,10 @@ public final class Main extends JavaPlugin {
 
     public static Message getMessage() {
         return message;
+    }
+
+    public static GuildManager getGuildManager() {
+        return guildManager;
     }
 
     private void checkPlugin() {

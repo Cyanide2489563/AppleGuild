@@ -5,9 +5,9 @@ import java.util.UUID;
 public class GuildMember {
     private UUID memberUUID;
     private String memberName;
-    private int memberrole;
+    private Role memberrole;
 }
 
 class Role {
-
+    private int role;
 }
