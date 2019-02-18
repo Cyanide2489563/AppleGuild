@@ -28,6 +28,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        guildManager.clearGuilds();
         info(message.Plugin_Close);
     }
 

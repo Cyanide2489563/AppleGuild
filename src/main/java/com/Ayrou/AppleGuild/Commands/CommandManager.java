@@ -16,10 +16,6 @@ public class CommandManager implements CommandExecutor {
             Player player = (Player) sender;
             Message message = Main.getMessage();
 
-            if (arg3.length == 0) {
-                player.sendMessage("此功能尚未實作");
-                return true;
-            }
             if(arg3[0].equalsIgnoreCase("Create")) {
                 if(arg3.length > 1) {
 
