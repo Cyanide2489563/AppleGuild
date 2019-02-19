@@ -13,7 +13,7 @@ public class GuildCreate {
     public GuildCreate(Player player, String guildName[]) {
         if (guildName.length > 1) {
             //TODO 完成公會名稱驗證
-            Bukkit.getPluginManager().callEvent(new GuildCreateEvent(player,guildName[1]));
+            Bukkit.getPluginManager().callEvent(new GuildCreateEvent(player, guildName[1]));
             player.sendMessage("建立公會需花費30000元是否建立公會");
         }
         else {

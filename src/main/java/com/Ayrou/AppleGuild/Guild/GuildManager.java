@@ -5,7 +5,7 @@ import com.Ayrou.AppleGuild.API.IGuildManager;
 import java.util.ArrayList;
 
 public class GuildManager implements IGuildManager {
-    public ArrayList<Guild> guilds = new ArrayList<Guild>();
+    public ArrayList<Guild> guilds = new ArrayList<>();
 
     public void addGuild(Guild guild) {
         this.guilds.add(guild);

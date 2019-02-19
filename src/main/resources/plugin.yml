@@ -1,8 +1,7 @@
-name: Main
+name: AppleGuild
 version: 0.0.1
-main: Main
+main: com.Ayrou.AppleGuild.Main
 api-version: 1.13
-prefix: Main
-load: STARTUP
 authors: [Apple14789]
-description: 公會插件
+description: GuildPlugin
+softdepend: [Vault,WorldGuard]
