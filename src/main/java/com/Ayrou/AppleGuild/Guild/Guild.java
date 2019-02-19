@@ -3,6 +3,7 @@ package com.Ayrou.AppleGuild.Guild;
 import com.Ayrou.AppleGuild.API.IGuild;
 import org.bukkit.Bukkit;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -15,6 +16,7 @@ public class Guild implements IGuild {
     private String leaderName;
     private UUID leaderUUID;
     private HashMap<UUID, Long> invitedPlayer;
+    private ArrayList<GuildMember> members;
 
     Guild(String guildName, UUID leaderUUID, double guildBlance, double guildExp, int guildGrade) {
         this.guildName = guildName;
@@ -86,5 +88,30 @@ public class Guild implements IGuild {
 
     public void removeGuildData() {
         //TODO 完成移除公會資料
+    }
+
+    public boolean isMember(UUID uuid) {
+        for (GuildMember member : members) {
+            if (member.getUniqueId().equals(uuid)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isInvited(UUID uuid) {
+        return invitedPlayer.containsKey(uuid);
+    }
+
+    private GuildMember getGuildMember(UUID uuid) {
+        return members.stream().filter(m -> m.getUniqueId().equals(uuid)).findFirst().orElse(null);
+    }
+
+    public void sendGuildMembersMessage(String message) {
+        for (GuildMember member : members) {
+            if(Bukkit.getOfflinePlayer(member.getUniqueId()).isOnline()) {
+                Bukkit.getPlayer(member.getUniqueId()).sendMessage(message);
+            }
+        }
     }
 }
