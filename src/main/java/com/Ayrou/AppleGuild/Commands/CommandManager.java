@@ -1,5 +1,6 @@
 package com.Ayrou.AppleGuild.Commands;
 
+import com.Ayrou.AppleGuild.Commands.Command.GuildCreate;
 import com.Ayrou.AppleGuild.Main;
 import com.Ayrou.AppleGuild.Message.Message;
 import org.bukkit.command.Command;
@@ -17,12 +18,7 @@ public class CommandManager implements CommandExecutor {
             Message message = Main.getMessage();
 
             if(arg3[0].equalsIgnoreCase("Create")) {
-                if(arg3.length > 1) {
-
-                }
-                else {
-                    player.sendMessage(message.Guild_Create_Fail_Name_Empty);
-                }
+                new GuildCreate(player, arg3);
             }
             if(arg3[0].equalsIgnoreCase("Invite")) {
                 if(arg3.length > 1) {

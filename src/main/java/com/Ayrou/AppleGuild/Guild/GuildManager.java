@@ -19,4 +19,14 @@ public class GuildManager implements IGuildManager {
     public void clearGuilds() {
         guilds.clear();
     }
+
+    @Override
+    public ArrayList<Guild> getGuildList() {
+        return guilds;
+    }
+
+    @Override
+    public int getGuildQuantity() {
+        return 0;
+    }
 }
