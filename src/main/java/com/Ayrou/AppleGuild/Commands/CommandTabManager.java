@@ -1,15 +1,15 @@
 package com.Ayrou.AppleGuild.Commands;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class CommandTabManager implements TabCompleter {
     private static final List<String> DiplomaticCOMMANDS = Arrays.asList("allies","peace","war","hostility");
@@ -22,28 +22,26 @@ public class CommandTabManager implements TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args[0].equalsIgnoreCase("Hell") && sender.isOp()) {
-            if(args.length > 2) {
+            if (args.length > 2) {
                 return BLANK;
             }
             return StringUtil.copyPartialMatches(args[0], HellCOMMANDS, HellCOMMANDS);
         }
         if (args[0].equalsIgnoreCase("SetDiplomaticStatus")) {
-            if(args.length > 2) {
+            if (args.length > 2) {
                 return BLANK;
             }
             return StringUtil.copyPartialMatches(args[0], DiplomaticCOMMANDS, DiplomaticCOMMANDS);
         }
         if (args[0].equalsIgnoreCase("invite") || args[0].equalsIgnoreCase("kick")) {
-            if(args.length > 2) {
-                return BLANK;
+            if(args.length > 2) return BLANK;
+            List<String> PlayerList = new ArrayList<>();
+            for(Player player : Bukkit.getServer().getOnlinePlayers()) {
+                PlayerList.add(player.getName());
             }
-            List<String> PLAYERLIST = new ArrayList<>();
-            for(Player player : Bukkit.getServer().getOnlinePlayers()){
-                PLAYERLIST.add(player.getName());
-            }
-            return StringUtil.copyPartialMatches(args[0], PLAYERLIST, PLAYERLIST);
+            return StringUtil.copyPartialMatches(args[0], PlayerList, PlayerList);
         }
-        if(args.length >= 2) {
+        if (args.length >= 2) {
             return BLANK;
         }
         return StringUtil.copyPartialMatches(args[0], COMMANDS, new ArrayList<>());

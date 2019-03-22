@@ -12,6 +12,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
+
     private static Main plugin;
     private static GuildManager guildManager;
     private static Message message = null;
@@ -22,7 +23,7 @@ public final class Main extends JavaPlugin {
         plugin = this;
         checkPlugin();
         info(message.Plugin_Initialize);
-        if(!setupEconomy()) info("經濟插件未正確啟用");
+        if (!setupEconomy()) info("經濟插件未正確啟用");
         guildManager = new GuildManager();
         getCommand("Guild").setExecutor(new CommandManager());
         getCommand("Guild").setTabCompleter(new CommandTabManager());
@@ -72,7 +73,8 @@ public final class Main extends JavaPlugin {
     }
 
     private boolean setupEconomy() {
-        RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager().getRegistration(Economy.class);
+        RegisteredServiceProvider<Economy> economyProvider;
+        economyProvider = getServer().getServicesManager().getRegistration(Economy.class);
         if (economyProvider != null) economy = economyProvider.getProvider();
         return (economy != null);
     }
