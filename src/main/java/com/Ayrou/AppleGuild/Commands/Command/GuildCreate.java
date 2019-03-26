@@ -6,8 +6,29 @@ import com.Ayrou.AppleGuild.Message.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-public class GuildCreate {
-    public GuildCreate(Player player, String guildName[]) {
+public class GuildCreate extends SubCommand {
+
+    @Override
+    public void onCommand(Player player, String[] args) {
+
+    }
+
+    @Override
+    public String name() {
+        return null;
+    }
+
+    @Override
+    public String info() {
+        return null;
+    }
+
+    @Override
+    public String[] aliases() {
+        return new String[0];
+    }
+
+    private void GuildCreate(Player player, String guildName[]) {
         Message message = Main.getMessage();
         if (Main.getGuildManager().getPlayerGuild(player.getUniqueId()) != null) {
             if (guildName.length > 1) {
@@ -18,7 +39,7 @@ public class GuildCreate {
                     if(temp.matches("[\u4e00-\u9fa5]")) {
                         num+=1;
                     }
-                    else if(temp.matches("[a-zA-Z0-9]*")){
+                    else if(temp.matches("[a-zA-Z0-9]*")) {
                         num+=1;
                     }
                     else matches=!matches;

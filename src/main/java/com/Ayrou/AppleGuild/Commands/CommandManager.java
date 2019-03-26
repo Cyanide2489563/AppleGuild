@@ -1,70 +1,53 @@
 package com.Ayrou.AppleGuild.Commands;
 
 import com.Ayrou.AppleGuild.Commands.Command.GuildCreate;
+import com.Ayrou.AppleGuild.Commands.Command.SubCommand;
 import com.Ayrou.AppleGuild.Main;
-import com.Ayrou.AppleGuild.Message.Message;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class CommandManager implements CommandExecutor {
 
+    private ArrayList<SubCommand> commands = new ArrayList<SubCommand>();
+    private Main plugin = Main.getInstance();
+
+    public String command = "guild";
+
+    CommandManager() {
+        plugin.getCommand(command).setExecutor(this);
+
+        this.commands.add(new GuildCreate());
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command arg1, String arg2, String[] arg3) {
-        if (sender instanceof Player) {
+        return false;
+    }
 
-            Player player = (Player) sender;
-            Message message = Main.getMessage();
+    private SubCommand get(String name) {
+        Iterator<SubCommand> subcommands = this.commands.iterator();
 
-            if(arg3[0].equalsIgnoreCase("Create")) {
-                new GuildCreate(player, arg3);
+        while (subcommands.hasNext()) {
+            SubCommand sc = subcommands.next();
+
+            if (sc.name().equalsIgnoreCase(name)) {
+                return sc;
             }
-            if(arg3[0].equalsIgnoreCase("Invite")) {
-                if(arg3.length > 1) {
 
+            String[] aliases;
+            int length = (aliases = sc.aliases()).length;
+
+            for (int i = 0; i < length; i++) {
+                String alias = aliases[i];
+                if (name.equalsIgnoreCase(alias)) {
+                    return sc;
                 }
-                else {
-                    player.sendMessage(message.Guild_Invite_Fail_Name_Empty);
-                }
-            }
-            if(arg3[0].equalsIgnoreCase("Accept")) {
-
-            }
-            if(arg3[0].equalsIgnoreCase("Cancel")) {
-
-            }
-            if(arg3[0].equalsIgnoreCase("Leave")) {
-
-            }
-            if(arg3[0].equalsIgnoreCase("Menu")) {
-
-            }
-            if(arg3[0].equalsIgnoreCase("setAnnouncement")) {
-
-            }
-            if(arg3[0].equalsIgnoreCase("SetDiplomaticStatus")) {
-
-            }
-            if(arg3[0].equalsIgnoreCase("SetRecruitAnnouncement")) {
-
-            }
-            if(arg3[0].equalsIgnoreCase("addGroup")) {
-
-            }
-            if(arg3[0].equalsIgnoreCase("Affirmative")) {
-
-            }
-            if(arg3[0].equalsIgnoreCase("Negative")) {
-
-            }
-            if(arg3[0].equalsIgnoreCase("Hell")) {
-                if (player.isOp()) {
-
-                }
-                else player.sendMessage("權限不足");
             }
         }
-        return true;
+        return null;
     }
 }

@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class Main extends JavaPlugin {
 
     private static Main plugin;
+    public CommandManager commandManager;
     private static GuildManager guildManager;
     private static Message message = null;
     private static Economy economy = null;
@@ -25,7 +26,7 @@ public final class Main extends JavaPlugin {
         info(message.Plugin_Initialize);
         if (!setupEconomy()) info("經濟插件未正確啟用");
         guildManager = new GuildManager();
-        getCommand("Guild").setExecutor(new CommandManager());
+        commandManager = new CommandManager();
         getCommand("Guild").setTabCompleter(new CommandTabManager());
         getServer().getPluginManager().registerEvents(new MainListener(), this);
         getServer().getPluginManager().registerEvents(new GuildListener(), this);
