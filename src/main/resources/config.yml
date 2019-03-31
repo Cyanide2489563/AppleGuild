@@ -1,0 +1,17 @@
+sqlserver:
+  IP: 127.0.0.1
+  Port: 3306
+  Database: test
+  Username: root
+  Password:
+Guilds:
+  Create: #公會初始狀態
+    Price: 30000 #建立公會所需資金
+    Member: 10 #初始成員
+    Grade: 0 #初始等級
+    Function_Points: 1 #起始功能點數
+  Guild:
+    Add_Member: 6
+    Top_Grade: 5
+    Top_Function_Points: 18 #功能點數上限
+    InviteTimeout: 30

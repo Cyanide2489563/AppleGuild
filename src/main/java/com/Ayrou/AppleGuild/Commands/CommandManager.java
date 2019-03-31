@@ -11,15 +11,14 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 
 public class CommandManager implements CommandExecutor {
 
     private ArrayList<SubCommand> commands = new ArrayList<>();
     private Main plugin = Main.getInstance();
-    private Message message = plugin.getMessage();
+    private Message message = Main.getMessage();
 
-    public String command = "guild";
+    private String command = "guild";
 
     public void setup() {
         plugin.getCommand(command).setExecutor(this);
@@ -30,7 +29,7 @@ public class CommandManager implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command arg1, String arg2, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("無效的命令發送者");
+            sender.sendMessage(message.Guild_Command_Invalid_Sender);
             return true;
         }
 
@@ -38,26 +37,24 @@ public class CommandManager implements CommandExecutor {
 
         if (arg1.getName().equalsIgnoreCase(command)) {
             if (args.length == 0) {
-                player.sendMessage("輸入/guild help 查看指令選項");
+                player.sendMessage(message.Guild_Command_Help);
                 return true;
             }
 
             SubCommand target = this.get(args[0]);
 
             if (target == null) {
-                player.sendMessage("無效的子指令");
+                player.sendMessage(message.Guild_Command_Invalid_SubCommand);
                 return true;
             }
 
-            ArrayList<String> arrayList = new ArrayList<>();
-
-            arrayList.addAll(Arrays.asList(args));
+            ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(args));
             arrayList.remove(0);
 
             try{
                 target.onCommand(player,args);
             }catch (Exception e){
-                player.sendMessage("An error has occurred.");
+                player.sendMessage(message.Guild_Command_Error);
                 e.printStackTrace();
             }
         }
@@ -65,11 +62,8 @@ public class CommandManager implements CommandExecutor {
     }
 
     private SubCommand get(String name) {
-        Iterator<SubCommand> subcommands = this.commands.iterator();
 
-        while (subcommands.hasNext()) {
-            SubCommand sc = subcommands.next();
-
+        for (SubCommand sc : this.commands) {
             if (sc.name().equalsIgnoreCase(name)) {
                 return sc;
             }

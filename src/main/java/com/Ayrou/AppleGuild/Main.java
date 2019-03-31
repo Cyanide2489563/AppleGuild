@@ -1,7 +1,6 @@
 package com.Ayrou.AppleGuild;
 
 import com.Ayrou.AppleGuild.Commands.CommandManager;
-import com.Ayrou.AppleGuild.Commands.CommandTabManager;
 import com.Ayrou.AppleGuild.Guild.GuildManager;
 import com.Ayrou.AppleGuild.Listener.GuildListener;
 import com.Ayrou.AppleGuild.Listener.MainListener;
@@ -10,6 +9,13 @@ import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public final class Main extends JavaPlugin {
 
@@ -23,14 +29,15 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         checkPlugin();
+        createData();
         message = new Message();
         info(message.Plugin_Initialize);
         if (!setupEconomy()) info("?????????");
         guildManager = new GuildManager();
         commandManager = new CommandManager();
         commandManager.setup();
-        getServer().getPluginManager().registerEvents(new MainListener(), this);
-        getServer().getPluginManager().registerEvents(new GuildListener(), this);
+        //getServer().getPluginManager().registerEvents(new MainListener(), this);
+        //getServer().getPluginManager().registerEvents(new GuildListener(), this);
     }
 
     @Override
@@ -83,5 +90,27 @@ public final class Main extends JavaPlugin {
 
     public static Economy getEconomy() {
         return economy;
+    }
+
+    private void createData() {
+        File languageFolder =  new File(getDataFolder(), "Language");
+        if(!languageFolder.exists())
+            languageFolder.mkdirs();
+
+        File languageFile =  new File(languageFolder, "language.yml");
+        if (!languageFile.exists()) {
+            try {
+                languageFile.createNewFile();
+                InputStream inputStream = this.getClass().getResourceAsStream("/language.yml");
+                Files.copy(inputStream, Paths.get(getDataFolder() + "/Language/language.yml"), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        File guildFolder =  new File(getDataFolder(), "Guild");
+        if(!guildFolder.exists()) {
+            guildFolder.mkdir();
+        }
     }
 }

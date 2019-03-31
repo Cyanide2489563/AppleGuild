@@ -4,6 +4,11 @@ Plugin_Close: "公會插件已關閉"
 Sql_Initialize: "公會插件資料庫已初始化"
 Sql_Connection: "公會插件已連線至資料庫"
 Sql_Disconnect: "公會插件已從資料庫斷開連線"
+#命令
+Guild_Command_Invalid_Sender: "錯誤的命令發送者"
+Guild_Command_Help: "輸入/guild help 來檢視命令列表"
+Guild_Command_Invalid_SubCommand: "錯誤的子命令"
+Guild_Command_Error: "發生錯誤請稍後在試"
 #通用
 Affirmative: "確定"
 Negative: "取消"
