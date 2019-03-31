@@ -87,7 +87,7 @@ public class Guild implements IGuild {
     }
 
     public void removeGuildData() {
-        //TODO 完成移除公會資料
+        //TODO ????????
     }
 
     public boolean isMember(UUID uuid) {

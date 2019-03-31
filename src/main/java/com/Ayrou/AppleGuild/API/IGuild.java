@@ -2,7 +2,7 @@ package com.Ayrou.AppleGuild.API;
 
 import java.util.UUID;
 
-/** 公會界面 */
+/** ???? */
 public interface IGuild {
 
     String getGuildName();
@@ -12,5 +12,5 @@ public interface IGuild {
     double getGuildExp();
     int getGuildGrade();
 
-    //TODO 補足公會API
+    //TODO ????API
 }

@@ -5,3 +5,5 @@ api-version: 1.13
 authors: [Apple14789]
 description: GuildPlugin
 softdepend: [Vault,WorldGuard]
+commands:
+  guild:

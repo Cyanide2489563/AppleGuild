@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 
 public class GuildCreate extends SubCommand {
 
+    private String commandName = "create";
+
     @Override
     public void onCommand(Player player, String[] args) {
 
@@ -15,7 +17,7 @@ public class GuildCreate extends SubCommand {
 
     @Override
     public String name() {
-        return null;
+        return commandName;
     }
 
     @Override
@@ -50,7 +52,7 @@ public class GuildCreate extends SubCommand {
                 }
                 if(Main.getEconomy().getBalance(player) > 30000){
                     Bukkit.getPluginManager().callEvent(new GuildCreateEvent(player, guildName[1]));
-                    player.sendMessage("建立公會需花費30000元是否建立公會");
+                    player.sendMessage("???????30000???????");
                 }
                 else {
                     player.sendMessage(message.Guild_Create_Fail_Blance_Shortage);
@@ -62,7 +64,7 @@ public class GuildCreate extends SubCommand {
             }
         }
         else {
-            player.sendMessage("你已有公會");
+            player.sendMessage("?????");
         }
     }
 }

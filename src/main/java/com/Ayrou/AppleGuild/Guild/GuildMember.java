@@ -22,18 +22,18 @@ public class GuildMember {
 
 class Role {
     private int role;
-    private boolean changeDiplomatic;//外交狀態
-    private boolean changeName;//更改公會名稱
-    private boolean disband;//解散公會
-    private boolean upgrade;//升級公會
-    private boolean changeRole;//更改成員權限
-    private boolean announce;//發布公告
-    private boolean reviewPlayer;//審核玩家
-    private boolean invitePlayer;//邀請玩家
-    private boolean kickPlayer;//剔除玩家
-    private boolean manageGroup;//身分組管理
-    private boolean guildHall;//私人會館管理
-    private boolean guildFeaturesTree;//公會功能樹管理
+    private boolean changeDiplomatic;//????
+    private boolean changeName;//??????
+    private boolean disband;//????
+    private boolean upgrade;//????
+    private boolean changeRole;//??????
+    private boolean announce;//????
+    private boolean reviewPlayer;//????
+    private boolean invitePlayer;//????
+    private boolean kickPlayer;//????
+    private boolean manageGroup;//?????
+    private boolean guildHall;//??????
+    private boolean guildFeaturesTree;//???????
 
     public Role(int role) {
         this.role = role;

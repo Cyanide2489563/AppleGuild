@@ -23,11 +23,12 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         checkPlugin();
+        message = new Message();
         info(message.Plugin_Initialize);
-        if (!setupEconomy()) info("經濟插件未正確啟用");
+        if (!setupEconomy()) info("?????????");
         guildManager = new GuildManager();
         commandManager = new CommandManager();
-        getCommand("Guild").setTabCompleter(new CommandTabManager());
+        commandManager.setup();
         getServer().getPluginManager().registerEvents(new MainListener(), this);
         getServer().getPluginManager().registerEvents(new GuildListener(), this);
     }
@@ -57,15 +58,15 @@ public final class Main extends JavaPlugin {
     private void checkPlugin() {
         int a = 0;
         if (!Bukkit.getPluginManager().isPluginEnabled("Vault")) {
-            info("缺少Vault");
+            info("??Vault");
             a++;
         }
         if (!Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
-            info("缺少worldguard");
+            info("??worldguard");
             a++;
         }
         if (!Bukkit.getPluginManager().isPluginEnabled("WorldEdit")) {
-            info("缺少worldedit");
+            info("??worldedit");
             a++;
         }
         if (a > 0) {
