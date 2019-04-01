@@ -20,6 +20,7 @@ public class Message {
     public String Guild_Create_Fail_Name_Empty;
     public String Guild_Create_Fail_Name_Format_Error;
     public String Guild_Create_Fail_Blance_Shortage;
+    public String Guild_Create_Affirmative_Blance;
     public String Guild_Create_Fail_Systeam_Error;
     public String Guild_Create_Success;
     public String Guild_Create_Fail_joined;
@@ -69,6 +70,7 @@ public class Message {
         Guild_Create_Fail_Name_Empty = config.getString("Guild_Create_Fail_Name_Empty");
         Guild_Create_Fail_Name_Format_Error = config.getString("Guild_Create_Fail_Name_Format_Error");
         Guild_Create_Fail_Blance_Shortage = config.getString("Guild_Create_Fail_Blance_Shortage");
+        Guild_Create_Affirmative_Blance = config.getString("Guild_Create_Affirmative_Blance");
         Guild_Create_Fail_joined = config.getString("Guild_Create_Fail_joined");
         Guild_Create_Fail_Systeam_Error = config.getString("Guild_Create_Fail_Systeam_Error");
         Guild_Create_Success = config.getString("Guild_Create_Success");

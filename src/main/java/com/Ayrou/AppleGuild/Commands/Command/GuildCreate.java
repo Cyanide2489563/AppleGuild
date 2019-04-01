@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 public class GuildCreate extends SubCommand {
 
-    private String commandName = "create";
+    private Message message = Main.getMessage();
 
     @Override
     public void onCommand(Player player, String[] args) {
@@ -17,7 +17,7 @@ public class GuildCreate extends SubCommand {
 
     @Override
     public String name() {
-        return commandName;
+        return "create";
     }
 
     @Override
@@ -30,8 +30,7 @@ public class GuildCreate extends SubCommand {
         return new String[0];
     }
 
-    private void GuildCreate(Player player, String guildName[]) {
-        Message message = Main.getMessage();
+    private void create(Player player, String guildName[]) {
         if (Main.getGuildManager().getPlayerGuild(player.getUniqueId()) != null) {
             if (guildName.length > 1) {
                 int num = 0;
@@ -50,9 +49,9 @@ public class GuildCreate extends SubCommand {
                     player.sendMessage(message.Guild_Create_Fail_Name_Format_Error);
                     return;
                 }
-                if(Main.getEconomy().getBalance(player) > 30000){
+                if (Main.getEconomy().getBalance(player) > 30000){
                     Bukkit.getPluginManager().callEvent(new GuildCreateEvent(player, guildName[1]));
-                    player.sendMessage("???????30000???????");
+                    player.sendMessage(message.Guild_Create_Affirmative_Blance);
                 }
                 else {
                     player.sendMessage(message.Guild_Create_Fail_Blance_Shortage);
@@ -64,7 +63,7 @@ public class GuildCreate extends SubCommand {
             }
         }
         else {
-            player.sendMessage("?????");
+            player.sendMessage(message.Guild_Create_Fail_joined);
         }
     }
 }

@@ -11,9 +11,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
@@ -37,7 +35,7 @@ public final class Main extends JavaPlugin {
         commandManager = new CommandManager();
         commandManager.setup();
         //getServer().getPluginManager().registerEvents(new MainListener(), this);
-        //getServer().getPluginManager().registerEvents(new GuildListener(), this);
+        getServer().getPluginManager().registerEvents(new GuildListener(), this);
     }
 
     @Override
@@ -65,15 +63,15 @@ public final class Main extends JavaPlugin {
     private void checkPlugin() {
         int a = 0;
         if (!Bukkit.getPluginManager().isPluginEnabled("Vault")) {
-            info("??Vault");
+            info("未安裝Vault");
             a++;
         }
         if (!Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
-            info("??worldguard");
+            info("未安裝worldguard");
             a++;
         }
         if (!Bukkit.getPluginManager().isPluginEnabled("WorldEdit")) {
-            info("??worldedit");
+            info("未安裝worldedit");
             a++;
         }
         if (a > 0) {

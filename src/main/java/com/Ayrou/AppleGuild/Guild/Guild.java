@@ -18,7 +18,11 @@ public class Guild implements IGuild {
     private HashMap<UUID, Long> invitedPlayer;
     private ArrayList<GuildMember> members;
 
-    Guild(String guildName, UUID leaderUUID, double guildBlance, double guildExp, int guildGrade) {
+    public Guild(){
+
+    }
+
+    public Guild(String guildName, UUID leaderUUID, double guildBlance, double guildExp, int guildGrade) {
         this.guildName = guildName;
         this.leaderUUID = leaderUUID;
         this.leaderName = Bukkit.getPlayer(leaderUUID).getName();

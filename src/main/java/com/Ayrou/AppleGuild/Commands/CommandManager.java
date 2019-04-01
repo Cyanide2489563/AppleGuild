@@ -10,7 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class CommandManager implements CommandExecutor {
 
@@ -48,8 +47,8 @@ public class CommandManager implements CommandExecutor {
                 return true;
             }
 
-            ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(args));
-            arrayList.remove(0);
+            //ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(args));
+            //arrayList.remove(0);
 
             try{
                 target.onCommand(player,args);
