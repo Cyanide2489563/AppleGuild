@@ -3,7 +3,6 @@ package com.Ayrou.AppleGuild;
 import com.Ayrou.AppleGuild.Commands.CommandManager;
 import com.Ayrou.AppleGuild.Guild.GuildManager;
 import com.Ayrou.AppleGuild.Listener.GuildListener;
-import com.Ayrou.AppleGuild.Listener.MainListener;
 import com.Ayrou.AppleGuild.Message.Message;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;

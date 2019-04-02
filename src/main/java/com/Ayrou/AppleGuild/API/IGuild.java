@@ -11,6 +11,4 @@ public interface IGuild {
     double getGuildBlance();
     double getGuildExp();
     int getGuildGrade();
-
-    //TODO ????API
 }

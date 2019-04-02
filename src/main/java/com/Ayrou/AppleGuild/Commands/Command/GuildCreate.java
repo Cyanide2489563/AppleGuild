@@ -12,7 +12,7 @@ public class GuildCreate extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-
+        create(player, args);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class GuildCreate extends SubCommand {
                     player.sendMessage(message.Guild_Create_Fail_Name_Format_Error);
                     return;
                 }
-                if (Main.getEconomy().getBalance(player) > 30000){
+                if (Main.getEconomy().getBalance(player) > Main.getGuildManager().getPrice()){
                     Bukkit.getPluginManager().callEvent(new GuildCreateEvent(player, guildName[1]));
                     player.sendMessage(message.Guild_Create_Affirmative_Blance);
                 }
