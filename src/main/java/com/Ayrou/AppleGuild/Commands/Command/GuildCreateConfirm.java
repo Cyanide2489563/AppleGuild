@@ -12,20 +12,19 @@ public class GuildCreateConfirm extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        if (args[1].equals("accept")) {
-            GuildManager guildManager = Main.getGuildManager();
 
-            if (guildManager.getPlayerGuild(player.getUniqueId()) == null) {
+        GuildManager guildManager = Main.getGuildManager();
+        if (guildManager.getPlayerGuild(player.getUniqueId()) == null) {
+            if (args[1].equals("accept")) {
                 Guild guild = new Guild();
                 guild.GuildCreate(args[2], player.getUniqueId());
+
                 guildManager.addGuild(guild);
                 player.sendMessage(message.replace(message.Guild_Create_Success,"%GuildName%",args[2]));
             }
-           else player.sendMessage(message.Guild_Create_Fail_joined);
+            else player.sendMessage(message.Guild_Create_Fail_Cancel);
         }
-        else {
-            player.sendMessage(message.Guild_Create_Fail_Cancel);
-        }
+        else player.sendMessage(message.Guild_Create_Fail_joined);
     }
 
     @Override
