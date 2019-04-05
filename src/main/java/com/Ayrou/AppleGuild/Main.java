@@ -17,7 +17,6 @@ import java.nio.file.StandardCopyOption;
 public final class Main extends JavaPlugin {
 
     private static Main plugin;
-    public CommandManager commandManager;
     private static GuildManager guildManager;
     private static Message message = null;
     private static Economy economy = null;
@@ -31,7 +30,7 @@ public final class Main extends JavaPlugin {
         info(message.Plugin_Initialize);
         if (!setupEconomy()) info("?????????");
         guildManager = new GuildManager();
-        commandManager = new CommandManager();
+        CommandManager commandManager = new CommandManager();
         commandManager.setup();
         //getServer().getPluginManager().registerEvents(new MainListener(), this);
         getServer().getPluginManager().registerEvents(new GuildListener(), this);
@@ -43,7 +42,7 @@ public final class Main extends JavaPlugin {
         info(message.Plugin_Close);
     }
 
-    public static void info(String string) {
+    private static void info(String string) {
         Bukkit.getConsoleSender().sendMessage("[AppleGuild] " + string);
     }
 

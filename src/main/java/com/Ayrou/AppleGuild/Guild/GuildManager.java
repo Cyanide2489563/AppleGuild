@@ -10,12 +10,12 @@ import java.util.UUID;
 public class GuildManager implements IGuildManager {
 
     private Main plugin = Main.getInstance();
-    public ArrayList<Guild> guilds = new ArrayList<>();
-    public double Price;
-    public int member;
-    public int grade;
-    public int function_Points;
-    public int InviteTimeout;
+    private ArrayList<Guild> guilds = new ArrayList<>();
+    private double Price;
+    private int member;
+    private int grade;
+    private int function_Points;
+    private int InviteTimeout;
 
     public GuildManager() {
         getGuildConfig();
@@ -23,7 +23,7 @@ public class GuildManager implements IGuildManager {
 
     public Guild getPlayerGuild(UUID uuid) {
         for (Guild guild : guilds) {
-            if(guild.isMember(uuid) || guild.isInvited(uuid)) {
+            if(guild.isMember(uuid)) {
                 return guild;
             }
         }

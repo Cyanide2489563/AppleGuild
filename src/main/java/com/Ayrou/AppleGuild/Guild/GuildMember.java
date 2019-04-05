@@ -1,11 +1,19 @@
 package com.Ayrou.AppleGuild.Guild;
 
+import org.bukkit.Bukkit;
+
 import java.util.UUID;
 
 public class GuildMember {
     private UUID memberUUID;
     private String memberName;
     private Role memberRole;
+
+    GuildMember(UUID uuid, String name, int role) {
+        memberUUID = uuid;
+        memberName = name;
+        memberRole = new Role(role);
+    }
 
     public UUID getUniqueId() {
         return memberUUID;

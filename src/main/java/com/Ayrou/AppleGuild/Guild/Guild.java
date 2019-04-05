@@ -18,7 +18,7 @@ public class Guild implements IGuild {
     private HashMap<UUID, Long> invitedPlayer;
     private ArrayList<GuildMember> members;
 
-    public Guild(){
+    public Guild() {
 
     }
 
@@ -26,6 +26,8 @@ public class Guild implements IGuild {
         this.guildName = guildName;
         this.leaderUUID = leaderUUID;
         this.leaderName = Bukkit.getPlayer(leaderUUID).getName();
+        this.members = new ArrayList<>();
+        this.members.add(new GuildMember(leaderUUID, leaderName, 4096));
         this.guildBlance = guildBlance;
         this.guildGrade = guildGrade;
         this.guildExp = guildExp;
@@ -36,6 +38,8 @@ public class Guild implements IGuild {
         this.guildName = guildName;
         this.leaderUUID = leaderUUID;
         this.leaderName = Bukkit.getPlayer(leaderUUID).getName();
+        this.members = new ArrayList<>();
+        this.members.add(new GuildMember(leaderUUID, leaderName, 4096));
         this.guildBlance = 0;
         this.guildGrade = 0;
         this.guildExp = 0;

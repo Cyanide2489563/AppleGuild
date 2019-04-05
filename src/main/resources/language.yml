@@ -21,7 +21,7 @@ Guild_Create_Fail_Name_Format_Error: "公會名稱需符合中英文數字且長
 Guild_Create_Fail_Blance_Shortage: "建立公會需起始資金%Price%"
 Guild_Create_Affirmative_Blance: "建立公會將花費%Price%元"
 Guild_Create_Fail_joined: "您無法建立公會，您已加入公會"
-Guild_Create_Fail_Systeam_Error: "系統發生錯誤"
+Guild_Create_Fail_Cancel: "已拒絕建立公會"
 Guild_Create_Success: "%GuildName%公會建立成功"
 #公會邀請
 Guild_Invite_Player: "已邀請%PlayerName%加入公會"

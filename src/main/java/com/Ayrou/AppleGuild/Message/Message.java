@@ -21,7 +21,7 @@ public class Message {
     public String Guild_Create_Fail_Name_Format_Error;
     public String Guild_Create_Fail_Blance_Shortage;
     public String Guild_Create_Affirmative_Blance;
-    public String Guild_Create_Fail_Systeam_Error;
+    public String Guild_Create_Fail_Cancel;
     public String Guild_Create_Success;
     public String Guild_Create_Fail_joined;
     public String Guild_Invite_Player;
@@ -72,7 +72,7 @@ public class Message {
         Guild_Create_Fail_Blance_Shortage = config.getString("Guild_Create_Fail_Blance_Shortage");
         Guild_Create_Affirmative_Blance = config.getString("Guild_Create_Affirmative_Blance");
         Guild_Create_Fail_joined = config.getString("Guild_Create_Fail_joined");
-        Guild_Create_Fail_Systeam_Error = config.getString("Guild_Create_Fail_Systeam_Error");
+        Guild_Create_Fail_Cancel = config.getString("Guild_Create_Fail_Cancel");
         Guild_Create_Success = config.getString("Guild_Create_Success");
         //公會邀請
         Guild_Invite_Player = config.getString("Guild_Invite_Player");
