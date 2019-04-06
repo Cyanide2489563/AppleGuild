@@ -1,5 +1,7 @@
 package com.Ayrou.AppleGuild.API;
 
+import org.bukkit.entity.Player;
+
 import java.util.UUID;
 
 /** ???? */
@@ -11,4 +13,16 @@ public interface IGuild {
     double getGuildBlance();
     double getGuildExp();
     int getGuildGrade();
+
+    int getGuildMemberLimited();
+
+    boolean isLeader(UUID uniqueId);
+
+    int getGuildMemberSize();
+
+    void sendGuildMessage(String message);
+
+    void addGuildOnlineMember(Player member);
+
+    void removeGuildOnlineMember(Player member);
 }

@@ -2,7 +2,8 @@ package com.Ayrou.AppleGuild.Commands;
 
 import com.Ayrou.AppleGuild.Commands.Command.GuildCreate;
 import com.Ayrou.AppleGuild.Commands.Command.GuildCreateConfirm;
-import com.Ayrou.AppleGuild.Commands.Command.SubCommand;
+import com.Ayrou.AppleGuild.Commands.Command.Invite;
+import com.Ayrou.AppleGuild.Commands.Command.Leave;
 import com.Ayrou.AppleGuild.Main;
 import com.Ayrou.AppleGuild.Message.Message;
 import org.bukkit.command.Command;
@@ -25,6 +26,8 @@ public class CommandManager implements CommandExecutor {
         plugin.getCommand(command).setTabCompleter(new CommandTabManager());
         this.commands.add(new GuildCreate());
         this.commands.add(new GuildCreateConfirm());
+        this.commands.add(new Leave());
+        this.commands.add(new Invite());
     }
 
     @Override

@@ -43,6 +43,7 @@ Guild_Join_Fail_Accept: "已有公會"
 #公會離開
 Guild_Leave_Success: "已離開公會%GuildName%"
 Guild_Leave_Message: "玩家%PlayName%已離開公會"
+Guild_Leave_Select_New_Leader: "請先選擇新的公會會長"
 Guild_Leave_Fail_No_Guild: "你沒有公會"
 #公會管理
 

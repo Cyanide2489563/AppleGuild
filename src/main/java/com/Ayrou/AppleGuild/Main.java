@@ -3,6 +3,7 @@ package com.Ayrou.AppleGuild;
 import com.Ayrou.AppleGuild.Commands.CommandManager;
 import com.Ayrou.AppleGuild.Guild.GuildManager;
 import com.Ayrou.AppleGuild.Listener.GuildListener;
+import com.Ayrou.AppleGuild.Listener.MainListener;
 import com.Ayrou.AppleGuild.Message.Message;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -32,7 +33,7 @@ public final class Main extends JavaPlugin {
         guildManager = new GuildManager();
         CommandManager commandManager = new CommandManager();
         commandManager.setup();
-        //getServer().getPluginManager().registerEvents(new MainListener(), this);
+        getServer().getPluginManager().registerEvents(new MainListener(), this);
         getServer().getPluginManager().registerEvents(new GuildListener(), this);
     }
 
@@ -42,8 +43,12 @@ public final class Main extends JavaPlugin {
         info(message.Plugin_Close);
     }
 
-    private static void info(String string) {
+    public static void info(String string) {
         Bukkit.getConsoleSender().sendMessage("[AppleGuild] " + string);
+    }
+
+    public static void deBug(String string) {
+        Bukkit.getConsoleSender().sendMessage("[AppleGuild] §4" + string);
     }
 
     public static Main getInstance() {

@@ -42,6 +42,7 @@ public class Message {
     public String Guild_Leave_Success;
     public String Guild_Leave_Message;
     public String Guild_Leave_Fail_No_Guild;
+    public String Guild_Leave_Select_New_Leader;
 
 
     public Message() {
@@ -95,6 +96,7 @@ public class Message {
         Guild_Leave_Success = config.getString("Guild_Leave_Success");
         Guild_Leave_Message = config.getString("Guild_Leave_Message");
         Guild_Leave_Fail_No_Guild = config.getString("Guild_Leave_Fail_No_Guild");
+        Guild_Leave_Select_New_Leader = config.getString("Guild_Leave_Select_New_Leader");
     }
 
     public String replace(String target,String string,String string2) {

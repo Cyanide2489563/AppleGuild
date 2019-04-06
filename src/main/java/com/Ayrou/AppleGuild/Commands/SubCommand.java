@@ -1,4 +1,4 @@
-package com.Ayrou.AppleGuild.Commands.Command;
+package com.Ayrou.AppleGuild.Commands;
 
 import org.bukkit.entity.Player;
 

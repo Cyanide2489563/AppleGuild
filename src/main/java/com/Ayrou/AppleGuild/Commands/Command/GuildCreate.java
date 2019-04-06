@@ -1,18 +1,19 @@
 package com.Ayrou.AppleGuild.Commands.Command;
 
-import com.Ayrou.AppleGuild.Event.GuildCreateEvent;
+import com.Ayrou.AppleGuild.Commands.SubCommand;
+import com.Ayrou.AppleGuild.Guild.GuildManager;
 import com.Ayrou.AppleGuild.Main;
 import com.Ayrou.AppleGuild.Message.Message;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class GuildCreate extends SubCommand {
 
     private Message message = Main.getMessage();
+    private GuildManager guildManager = Main.getGuildManager();
 
     @Override
     public void onCommand(Player player, String[] args) {
@@ -53,12 +54,12 @@ public class GuildCreate extends SubCommand {
                     player.sendMessage(message.Guild_Create_Fail_Name_Format_Error);
                     return;
                 }
-                if (Main.getEconomy().getBalance(player) > Main.getGuildManager().getPrice()){
+                if (Main.getEconomy().getBalance(player) > Main.getGuildManager().getPrice()) {
+                    guildManager.addGuildCreateList(player, guildName[1]);
                     guildCreateConfirm(player, guildName[1]);
                 }
                 else {
                     player.sendMessage(message.Guild_Create_Fail_Blance_Shortage);
-                    return;
                 }
             }
             else {
@@ -82,7 +83,7 @@ public class GuildCreate extends SubCommand {
         TextComponent space = new TextComponent("§r   ");
 
         TextComponent text2 = new TextComponent("§4§n[拒絕]\n");
-        text2.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/guild CreateConfirm cancel"));
+        text2.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/guild CreateConfirm cancel " + name));
         text2.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("拒絕").create()));
 
         TextComponent down = new TextComponent("§a============================§r");
