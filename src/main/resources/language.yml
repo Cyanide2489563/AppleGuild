@@ -34,6 +34,7 @@ Guild_Invite_Fail_Player_Already: "玩家%PlayerName%已經有公會"
 Guild_Invite_Fail_Player_Negative: "玩家%PlayerName%已拒絕邀請"
 Guild_Invite_Fail_Guild_Full: "公會已滿"
 Guild_Invite_Player_Affirmative: "玩家%PlayerName%已接受邀請"
+Guild_Invite_Player_Message: "你已被%GuildName%邀請加入"
 #公會加入
 Guild_Join_Accept: "已成功加入%GuildName%公會"
 Guild_Join_Fail_Cancel: "已拒絕加入%GuildName%公會"

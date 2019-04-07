@@ -43,13 +43,13 @@ public class Leave extends SubCommand {
                 else player.sendMessage(message.replace(
                         message.Guild_Leave_Success,"%GuildName%", guild.getGuildName()
                 ));
-                guild.removeGuildOnlineMember(player);
+                guild.removeGuildMember(player.getUniqueId());
             }
             else {
                 guild.sendGuildMessage(message.replace(
                         message.Guild_Leave_Message, "%PlayName%", player.getName()
                 ));
-                guild.removeGuildOnlineMember(player);
+                guild.removeGuildMember(player.getUniqueId());
             }
         }
         else player.sendMessage(message.Guild_Leave_Fail_No_Guild);

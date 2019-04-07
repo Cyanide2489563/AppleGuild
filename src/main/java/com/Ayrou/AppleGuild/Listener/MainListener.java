@@ -20,7 +20,7 @@ public class MainListener implements Listener {
         Player player = event.getPlayer();
         Guild guild = guildManager.getPlayerGuild(player.getUniqueId());
         if (guild != null) {
-            guild.addGuildOnlineMember(player);
+            guild.addGuildOnlineMember(player.getUniqueId());
         }
     }
 
@@ -29,7 +29,7 @@ public class MainListener implements Listener {
         Player player = event.getPlayer();
         Guild guild = guildManager.getPlayerGuild(player.getUniqueId());
         if (guild != null) {
-            guild.removeGuildOnlineMember(player);
+            guild.removeGuildOnlineMember(player.getUniqueId());
         }
     }
 
@@ -38,7 +38,7 @@ public class MainListener implements Listener {
         Player player = event.getPlayer();
         Guild guild = guildManager.getPlayerGuild(player.getUniqueId());
         if (guild != null) {
-            guild.removeGuildOnlineMember(player);
+            guild.removeGuildOnlineMember(player.getUniqueId());
         }
     }
 

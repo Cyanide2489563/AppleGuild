@@ -15,19 +15,26 @@ public class Invite extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
+
+        if (args.length < 2) {
+            player.sendMessage(message.Guild_Invite_Fail_Name_Empty);
+            return;
+        }
+
         Guild guild = guildManager.getPlayerGuild(player.getUniqueId());
+
         if (guild != null) {
             Player target = Bukkit.getPlayer(args[1]);
-            if (target != player) {
-                if (target.isOnline()) {
-                    if (guild.getGuildMemberLimited() - guild.getGuildMemberSize() > 1) {
-                        invite(target);
+            if (target != null) {
+                if (target != player) {
+                    if (target.isOnline()) {
+                        invite(player, target, guild);
                     }
-                    else player.sendMessage(message.Guild_Invite_Fail_Guild_Full);
+                    else player.sendMessage(message.Guild_Invite_Fail_Player_Offline);
                 }
-                else player.sendMessage(message.Guild_Invite_Fail_Player_Offline);
+                else player.sendMessage(message.Guild_Invite_Fail_Player_Stupid);
             }
-            else player.sendMessage(message.Guild_Invite_Fail_Player_Stupid);
+            else player.sendMessage(message.Guild_Invite_Fail_Name_Empty);
         }
         else player.sendMessage(message.Guild_Invite_Fail_No_Guild);
     }
@@ -47,7 +54,21 @@ public class Invite extends SubCommand {
         return new String[0];
     }
 
-    private void invite(Player player) {
-
+    private void invite(Player player, Player target, Guild guild) {
+        if (guild.getGuildMemberLimited() - guild.getGuildMemberSize() > 1) {
+            if (!guild.isMember(player.getUniqueId())) {
+                if (!guild.isInvited(player.getUniqueId())) {
+                    guild.invite(target.getUniqueId());
+                    player.sendMessage(message.replace(
+                            message.Guild_Invite_Player,"%PlayerName%", target.getName()
+                    ));
+                }
+                else ;
+            }
+            else player.sendMessage(message.replace(
+                    message.Guild_Invite_Fail_Player_joined,"%PlayerName%", target.getName()
+            ));
+        }
+        else player.sendMessage(message.Guild_Invite_Fail_Guild_Full);
     }
 }

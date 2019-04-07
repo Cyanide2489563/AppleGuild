@@ -2,15 +2,17 @@ package com.Ayrou.AppleGuild.Guild;
 
 import com.Ayrou.AppleGuild.API.IGuild;
 import com.Ayrou.AppleGuild.Main;
+import com.Ayrou.AppleGuild.Message.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Guild implements IGuild {
 
+    private Message message = Main.getMessage();
     private GuildManager guildManager = Main.getGuildManager();
 
     private String guildName;
@@ -21,8 +23,8 @@ public class Guild implements IGuild {
     private String leaderName;
     private UUID leaderUUID;
     private HashMap<UUID, Long> invitedPlayer;
-    private ArrayList<GuildMember> members;
-    private ArrayList<Player> onlineMembers;
+    private HashMap<UUID, GuildMember> members;
+    private HashMap<UUID, Player> onlineMembers;
 
     public Guild() {
 
@@ -31,27 +33,29 @@ public class Guild implements IGuild {
     public Guild(String guildName, UUID leaderUUID, double guildBlance, double guildExp, int guildGrade) {
         this.guildName = guildName;
         this.leaderUUID = leaderUUID;
-        this.leaderName = Bukkit.getPlayer(leaderUUID).getName();
-        this.members = new ArrayList<>();
-        this.members.add(new GuildMember(leaderUUID, leaderName, 4096));
+        this.leaderName = Objects.requireNonNull(Bukkit.getPlayer(leaderUUID)).getName();
+        this.members = new HashMap<>();
+        this.members.put(leaderUUID, new GuildMember(leaderUUID, leaderName, 4096));
         this.guildBlance = guildBlance;
         this.guildGrade = guildGrade;
         this.guildExp = guildExp;
         this.invitedPlayer = new HashMap<>();
+        this.onlineMembers = new HashMap<>();
     }
 
     public void GuildCreate(String guildName, UUID leaderUUID) {
         this.guildName = guildName;
         this.leaderUUID = leaderUUID;
-        this.leaderName = Bukkit.getPlayer(leaderUUID).getName();
+        this.leaderName = Objects.requireNonNull(Bukkit.getPlayer(leaderUUID)).getName();
         this.guildMemberLimited = 10;
-        this.members = new ArrayList<>();
-        this.members.add(new GuildMember(leaderUUID, leaderName, 4096));
+        this.members = new HashMap<>();
+        this.members.put(leaderUUID, new GuildMember(leaderUUID, leaderName, 4096));
         this.guildBlance = 0;
         this.guildGrade = 0;
         this.guildExp = 0;
         this.invitedPlayer = new HashMap<>();
-        addGuildOnlineMember(Bukkit.getPlayer(leaderUUID));
+        this.onlineMembers = new HashMap<>();
+        this.onlineMembers.put(leaderUUID, Bukkit.getPlayer(leaderUUID));
     }
 
     /**
@@ -119,18 +123,16 @@ public class Guild implements IGuild {
 
     @Override
     public void sendGuildMessage(String message) {
-        for (Player member : onlineMembers) {
-            member.sendMessage(message);
+        for (HashMap.Entry<UUID, Player> member : onlineMembers.entrySet()) {
+            member.getValue().sendMessage(message);
         }
     }
 
-    @Override
-    public void addGuildOnlineMember(Player member) {
-        onlineMembers.add(member);
+    public void addGuildOnlineMember(UUID member) {
+        onlineMembers.put(member, Bukkit.getPlayer(member));
     }
 
-    @Override
-    public void removeGuildOnlineMember(Player member) {
+    public void removeGuildOnlineMember(UUID member) {
         onlineMembers.remove(member);
     }
 
@@ -138,20 +140,23 @@ public class Guild implements IGuild {
         //TODO ????????
     }
 
-    private void invite(Player player) {
-        GuildMember member = getGuildMember(player.getUniqueId());
-        if (!members.contains(member) && !invitedPlayer.containsKey(player.getUniqueId())) {
-            invitedPlayer.put(player.getUniqueId(), System.currentTimeMillis() + guildManager.getInviteTimeout());
+    public void invite(UUID player) {
+        Player player1 = Bukkit.getPlayer(player);
+        if (player1 != null) {
+            invitedPlayer.put(player, System.currentTimeMillis() + guildManager.getInviteTimeout());
+            player1.sendMessage(message.replace(
+                    message.Guild_Invite_Player_Message,"%GuildName%", guildName
+            ));
         }
     }
 
-    boolean isMember(UUID uuid) {
-        for (GuildMember member : members) {
-            if (member.getUniqueId().equals(uuid)) {
-                return true;
-            }
-        }
-        return false;
+    public void removeGuildMember(UUID player) {
+        members.remove(player);
+        onlineMembers.remove(player);
+    }
+
+    public boolean isMember(UUID uuid) {
+        return members.containsKey(uuid);
     }
 
     public boolean isInvited(UUID uuid) {
@@ -159,6 +164,6 @@ public class Guild implements IGuild {
     }
 
     private GuildMember getGuildMember(UUID uuid) {
-        return members.stream().filter(m -> m.getUniqueId().equals(uuid)).findFirst().orElse(null);
+        return members.get(uuid);
     }
 }

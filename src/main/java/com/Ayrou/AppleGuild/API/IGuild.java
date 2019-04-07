@@ -1,7 +1,5 @@
 package com.Ayrou.AppleGuild.API;
 
-import org.bukkit.entity.Player;
-
 import java.util.UUID;
 
 /** ???? */
@@ -21,8 +19,4 @@ public interface IGuild {
     int getGuildMemberSize();
 
     void sendGuildMessage(String message);
-
-    void addGuildOnlineMember(Player member);
-
-    void removeGuildOnlineMember(Player member);
 }

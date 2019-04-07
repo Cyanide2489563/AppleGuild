@@ -5,7 +5,7 @@ import java.io.File;
 import com.Ayrou.AppleGuild.Main;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-public class Message {
+public final class Message {
     public String Plugin_Initialize;
     public String Plugin_Close;
     public String Sql_Initialize;
@@ -34,6 +34,7 @@ public class Message {
     public String Guild_Invite_Fail_Player_Negative;
     public String Guild_Invite_Fail_Guild_Full;
     public String Guild_Invite_Player_Affirmative;
+    public String Guild_Invite_Player_Message;
     public String Guild_Join_Accept;
     public String Guild_Join_Fail_Cancel;
     public String Guild_Join_Fail_Accept;
@@ -86,6 +87,7 @@ public class Message {
         Guild_Invite_Fail_Player_Negative = config.getString("Guild_Invite_Fail_Player_Negative");
         Guild_Invite_Fail_Guild_Full = config.getString("Guild_Invite_Fail_Guild_Full");
         Guild_Invite_Player_Affirmative = config.getString("Guild_Invite_Player_Affirmative");
+        Guild_Invite_Player_Message = config.getString("Guild_Invite_Player_Message");
         //公會加入
         Guild_Join_Accept = config.getString("Guild_Join_Accept");
         Guild_Join_Fail_Accept = config.getString("Guild_Join_Fail_Accept");
