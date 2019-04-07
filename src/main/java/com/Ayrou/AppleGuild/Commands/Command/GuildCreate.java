@@ -1,6 +1,7 @@
 package com.Ayrou.AppleGuild.Commands.Command;
 
 import com.Ayrou.AppleGuild.Commands.SubCommand;
+import com.Ayrou.AppleGuild.Guild.Guild;
 import com.Ayrou.AppleGuild.Guild.GuildManager;
 import com.Ayrou.AppleGuild.Main;
 import com.Ayrou.AppleGuild.Message.Message;
@@ -56,7 +57,7 @@ public class GuildCreate extends SubCommand {
                 }
                 if (Main.getEconomy().getBalance(player) > Main.getGuildManager().getPrice()) {
                     guildManager.addGuildCreateList(player, guildName[1]);
-                    guildCreateConfirm(player, guildName[1]);
+                    Guild.sendConfirmMessage(player.getUniqueId(), );
                 }
                 else {
                     player.sendMessage(message.Guild_Create_Fail_Blance_Shortage);

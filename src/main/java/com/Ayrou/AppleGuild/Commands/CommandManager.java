@@ -55,9 +55,10 @@ public class CommandManager implements CommandExecutor {
             //ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(args));
             //arrayList.remove(0);
 
-            try{
+            try {
                 target.onCommand(player,args);
-            }catch (Exception e){
+            }
+            catch (Exception e) {
                 player.sendMessage(message.Guild_Command_Error);
                 e.printStackTrace();
             }
