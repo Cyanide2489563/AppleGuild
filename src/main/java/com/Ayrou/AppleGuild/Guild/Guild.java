@@ -133,35 +133,6 @@ public class Guild implements IGuild {
         }
     }
 
-    public static void sendConfirmMessage(UUID uuid, String message, String command, String command1) {
-        TextComponent up = new TextComponent("§a============================§r\n");
-        TextComponent text = new TextComponent(message + "\n");
-        TextComponent text1 = new TextComponent("§2§n[接受]");
-        text1.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/guild " + command));
-        text1.setHoverEvent(new HoverEvent(
-                HoverEvent.Action.SHOW_TEXT,
-                new ComponentBuilder(this.message.Affirmative).create()
-        ));
-
-        TextComponent space = new TextComponent("§r   ");
-
-        TextComponent text2 = new TextComponent("§4§n[拒絕]\n");
-        text2.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/guild " + command1));
-        text2.setHoverEvent(new HoverEvent(
-                HoverEvent.Action.SHOW_TEXT,
-                new ComponentBuilder(this.message.Negative).create()
-        ));
-
-        TextComponent down = new TextComponent("§a============================§r");
-        up.addExtra(text);
-        up.addExtra(text1);
-        up.addExtra(space);
-        up.addExtra(text2);
-        up.addExtra(down);
-
-        Objects.requireNonNull(Bukkit.getPlayer(uuid)).spigot().sendMessage(up);
-    }
-
     public void addGuildOnlineMember(UUID member) {
         onlineMembers.put(member, Bukkit.getPlayer(member));
     }
