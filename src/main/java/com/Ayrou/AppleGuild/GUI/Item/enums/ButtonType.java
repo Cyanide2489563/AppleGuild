@@ -12,10 +12,16 @@ public enum ButtonType {
     LARROW_RIGHT(9),
     SORT_NUMBER(10),
     SORT_NAME(11),
-    LIST(12),
-    OK(13);
+    Affirmative(12),
+    Negative(13);
+
+    private int Value;
 
     ButtonType(int i) {
+        this.Value = i;
+    }
 
+    public int getValue() {
+        return this.Value;
     }
 }
